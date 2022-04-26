@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <div class="container"
+         style="background-color:transparent;
+                width:50%;
+                margin:auto;
+                height:83%;
+                padding-top:13rem;">
+        <div style="margin-left:14rem;">
+            <a class="hoverElement" style="font-family:coolvetica;
+                      font-size:60px;
+                      text-decoration:none;
+                      color:white;">Translator</a>
+        </div>
+        <div style="margin:0rem auto 0;width:500;">
+            <form class="d-flex my-2" action="/translate">
+                <input class="form-control"
+                       type="text"
+                       placeholder="Wikipedia Title"
+                       id="wiki_title"
+                       name="wiki_title"
+                       style="margin-right:10;
+                              height:3rem;"
+                       required>
+                <select name="target_lang" id="target_lang">
+                    <option value="hi">
+                        Hindi
+                    </option>
+                    <option value="pa">
+                        Punjabi
+                    </option>
+                    <option value="bn">
+                        Bengali
+                    </option>
+                    <option value="gu">
+                        Gujarati
+                    </option>
+                    <option value="kn">
+                        Kannada
+                    </option>
+                    <option value="ml">
+                        Malayalam
+                    </option>
+                    <option value="mr">
+                        Marathi
+                    </option>
+                    <option value="ne">
+                        Nepali
+                    </option>
+                    <option value="or">
+                        Oriya
+                    </option>
+                    <option value="si">
+                        Sinhala
+                    </option>
+                    <option value="ta">
+                        Tamil
+                    </option>
+                    <option value="te">
+                        Telugu
+                    </option>
+                    <option value="ur">
+                        Urdu
+                    </option>
+                </select>
+                <button style="margin-left:1rem;"
+                        class="btn btn-outline-success"
+                        type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock body %}

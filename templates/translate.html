@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <style>
+    table {
+        border-collapse: collapse;
+    }
+    th {
+        background-color:#FFE335;
+        color:black;
+    }
+    th, td {
+        width:150px;
+        text-align:center;
+        padding:5px
+    }
+    </style>
+    <div style="margin:0 12rem;">
+        <table style="width:100%;">
+            <tr style="padding: 1rem;">
+                <th>Original Sentence</th>
+                <th>Translated Sentence</th>
+                <th></th>
+            </tr>
+            {% for sentence in intro_list %}
+                <tr style="padding: 1rem;">
+                    <td style="width:50%;color:white;">{{ sentence.original_sentence }}</td>
+                    <td style="width:50%;padding:0;height:100%;padding: 1rem; 1rem;">
+                        <textarea type="text"
+                                  id="transliteration{{forloop.counter}}"
+                                  style="resize: none;
+                                         width: 100%;
+                                         height: 100%;">{{ sentence.translated_sentence }}</textarea>
+                    </td>
+                    <td>
+                        <a href="" onclick="SaveSentence('{{forloop.counter}}', '{{sentence.id}}', '{{target_lang}}')">Save</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script type="text/javascript" src="{% static 'js/transliteration-input.bundle.js' %}"></script>
+    <script type="text/javascript">
+        
+    let transliterationInput = document.querySelectorAll(`[id^="transliteration"]`);
+    transliterationInput.forEach(function(input) {
+        enableTransliteration(input, '{{target_lang}}');
+      });
+    
+    
+    </script>
+{% endblock body %}

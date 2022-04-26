@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <style>
+    table {
+        border-collapse: collapse;
+    }
+    th {
+        background-color:#FFE335;
+        color:black;
+    }
+    th, td {
+        width:150px;
+        text-align:center;
+        border:1px solid black;
+        padding:5px
+    </style>
+    <div style="margin:0 12rem;">
+        <table style="width:100%;">
+            <tr style="padding: 1rem;">
+                <th>Wikipedia Page</th>
+                <th>Language</th>
+                <th>Created at</th>
+            </tr>
+            {% for project in projects %}
+                <tr style="padding: 1rem;">
+                    <td style="width:25%;color:white;"><a href = "/translate?wiki_title={{ project.wiki_title }}&target_lang={{ project.target_lang }}">{{ project.wiki_title }}</a></td>
+                    <td style="width:25%;color:white;">{{ project.target_lang }}</td>
+                    <td style="width:30%;color:white;">{{ project.created_at }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock body %}
